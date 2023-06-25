@@ -1,1 +1,26 @@
-<p>cliente works!</p>
+<div class="card text-bg-secondary mb-3">
+    <div class="card-header">Usuarios</div>
+    <div class="card-body">
+      <h5 class="card-title">Lista usuarios registrados</h5>
+      <table class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nombre</th>
+                <th>Apellido Paterno</th>
+                <th>Apellido Materno</th>
+                <th>Identificacion</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let cliente of clientes">
+                <td>{{cliente.id}}</td>
+                <td>{{cliente.nombre}}</td>
+                <td>{{cliente.apellidoPaterno}}</td>
+                <td>{{cliente.apellidoMaterno}}</td>
+                <td>{{cliente.identificacion}}</td>
+            </tr>     
+        </tbody>
+      </table>
+    </div>
+  </div>
