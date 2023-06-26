@@ -12,7 +12,8 @@ import { FormsModule } from '@angular/forms';
 const routes: Routes=[
   {path:'',redirectTo:'/usuarios',pathMatch:'full'},
   {path:'cliente', component: ClienteComponent},
-  {path:'cliente/form', component: FormComponent}
+  {path:'cliente/form', component: FormComponent},
+  {path:'cliente/form/:id', component: FormComponent}
 ]
 @NgModule({
   declarations: [
