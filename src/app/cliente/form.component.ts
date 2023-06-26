@@ -35,6 +35,15 @@ export class FormComponent {
         this.router.navigate(['/cliente'])
         swal('Nuevo usuario', `Usuario ${this.cliente.nombre} creado con exito`)
       }
+    );
+  }
+  
+  update():void{
+    this.clienteService.update(this.cliente).subscribe(
+      cliente => {
+        this.router.navigate(['/cliente'])
+        swal('Cliente actualizado', `Cliente ${cliente.nombre} actualizado con exito`,'success')
+      }
     )
   }
 }
