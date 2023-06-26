@@ -1,17 +1,33 @@
 <div class="card bg-dark text-white">
     <div class="card-header">{{ titulo }}</div>
     <div class="card-body">
-        <form (ngSubmit) = "create()">
+        <form #clienteForm="ngForm">
             <div class="form-group row">
                 <label for="" class="col-form-label col-sm-2">Nombre</label>
                 <div class="col-sm-6">
-                    <input type="text" class="form-control" [(ngModel)]="cliente.nombre" name="nombre">
+                    <input type="text" class="form-control" [(ngModel)]="cliente.nombre" name="nombre" required minlength="3" #nombre="ngModel">
+                    <div class="alert alert-danger" *ngIf="nombre.invalid && (nombre.dirty || nombre.touched)">
+                        <div *ngIf="nombre.errors.required">
+                            Nombre es requerido
+                        </div>
+                        <div *ngIf="nombre.errors.minlength">
+                            Nombre debe tener al menos 3 caracteres
+                        </div>
+                    </div>
                 </div>
             </div>
             <div class="form-group row">
                 <label for="" class="col-form-label col-sm-2">Apellido Paterno</label>
                 <div class="col-sm-6">
-                    <input type="text" class="form-control" [(ngModel)]="cliente.apellidoPaterno" name="apellidoPaterno">
+                    <input type="text" class="form-control" [(ngModel)]="cliente.apellidoPaterno" name="apellidoPaterno" required minlength="3" #apellidoPaterno="ngModel">
+                    <div class="alert alert-danger" *ngIf="apellidoPaterno.invalid && (apellidoPaterno.dirty || apellidoPaterno.touched)">
+                        <div *ngIf="apellidoPaterno.errors.required">
+                            Apellido Paterno es requerido.
+                        </div>
+                        <div *ngIf="apellidoPaterno.errors.minlength">
+                            Apellido Paterno debe tener al menos 3 caracteres.
+                        </div>
+                    </div>
                 </div>
             </div>
             <div class="form-group row">
@@ -23,12 +39,20 @@
             <div class="form-group row">
                 <label for="" class="col-form-label col-sm-2">Identificacion</label>
                 <div class="col-sm-6">
-                    <input type="text" class="form-control" [(ngModel)]="cliente.identificacion" name="identificacion">
+                    <input type="text" class="form-control" [(ngModel)]="cliente.identificacion" name="identificacion" required minlength="3" #identificacion="ngModel">
+                    <div class="alert alert-danger" *ngIf="identificacion.invalid && (identificacion.dirty || identificacion.touched)">
+                        <div *ngIf="identificacion.errors.required">
+                            Identificacion es requerido
+                        </div>
+                        <div *ngIf="identificacion.errors.minlength">
+                            Identificacion debe tener al menos 3 caracteres
+                        </div>
+                    </div>
                 </div>
             </div>
             <div class="form-group row">
                 <div class="col-sm-6">
-                    <button class="btn btn-primary" role="button">Registrar</button>
+                    <button class="btn btn-primary" role="button" [disabled]="!clienteForm.form.valid">Registrar</button>
                 </div>
             </div>
         </form>
